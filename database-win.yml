@@ -1,0 +1,41 @@
+#
+# docker network create -d bridge development
+# docker-compose -f database-win.yml up -d
+#
+version: "3.5"
+networks:
+  development:
+    external:
+      name: development
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    networks:
+      - development
+    environment:
+      TZ: Asia/Bangkok
+      PGTZ: Asia/Bangkok
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5433:5433
+    restart: unless-stopped
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    networks:
+      - development
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    # volumes:
+    #   - $HOME/developer/volumes/pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+volumes:
+  pgdata:
+    driver: local

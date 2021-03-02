@@ -1,0 +1,652 @@
+tags:
+  - name: Teacher
+    description: Teacher
+path:
+  /create-teacher:
+    post:
+      tags:
+        - Teacher
+      summary: Get greeting message from TheCodebuzz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - first_name
+                - last_name
+              properties:
+                first_name:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  description: first_name
+                  example: "yeenEiEi"
+                last_name:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  writeOnly: true
+                  description: last_name
+                  example: "************"
+                date_of_birth:
+                  type: string
+                  format: date
+                age:
+                  type: number
+                country:
+                  type: string
+      responses:
+        200:
+          # $ref: "#/components/responses/Success200"
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        205:
+          $ref: "#/components/responses/BodyWarning"
+  /update-teacher:
+    put:
+      tags:
+        - Teacher
+      summary: Get greeting message from TheCodebuzz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - first_name
+                - last_name
+              properties:
+                id:
+                  type: string
+                first_name:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  description: first_name
+                  example: "yeenEiEi"
+                last_name:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  writeOnly: true
+                  description: last_name
+                  example: "************"
+                date_of_birth:
+                  type: string
+                  format: date
+                age:
+                  type: number
+                country:
+                  type: string
+      responses:
+        200:
+          # $ref: "#/components/responses/Success200"
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        205:
+          $ref: "#/components/responses/BodyWarning"
+  /delete-teacher:
+    delete:
+      tags:
+        - Teacher
+      summary: Delete Teacher
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  /find-teacher:
+    get:
+      tags:
+        - Teacher
+      summary: Get Teacher
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  /search-teacher:
+    get:
+      tags:
+        - Teacher
+      summary: Search Teacher
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    oneOf:
+                      - type: object
+                      - type: array
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  /create-course:
+    post:
+      tags:
+        - Course
+      summary: Get greeting message from TheCodebuzz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - course_name
+              properties:
+                course_name:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  description: course_name
+                  example: "course_name"
+                course_description:
+                  type: string
+                  minLength: 8
+                  maxLength: 500
+                  writeOnly: true
+                  example: "************"
+                course_length:
+                  type: number
+                language:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  example: "************"
+      responses:
+        200:
+          # $ref: "#/components/responses/Success200"
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        205:
+          $ref: "#/components/responses/BodyWarning"
+  /update-course:
+    put:
+      tags:
+        - Course
+      summary: Get greeting message from TheCodebuzz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - course_name
+              properties:
+                id:
+                  type: string
+                course_name:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  description: course_name
+                  example: "course_name"
+                course_description:
+                  type: string
+                  minLength: 8
+                  maxLength: 500
+                  writeOnly: true
+                  example: "************"
+                course_length:
+                  type: number
+                age:
+                  type: number
+                language:
+                  type: string
+                  minLength: 8
+                  maxLength: 50
+                  example: "************"
+      responses:
+        200:
+          # $ref: "#/components/responses/Success200"
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        205:
+          $ref: "#/components/responses/BodyWarning"
+  /delete-course:
+    delete:
+      tags:
+        - Course
+      summary: Delete Course
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  /find-course:
+    get:
+      tags:
+        - Course
+      summary: Get Course
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    type: object
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  /search-course:
+    get:
+      tags:
+        - Course
+      summary: Search Course
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: number
+                    description: HTTP reponse code
+                    example: 200
+                  message:
+                    oneOf:
+                      - type: object
+                      - type: array
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+          # /login:
+  #   post:
+  #     tags:
+  #       - Auth
+  #     summary: Get greeting message from TheCodebuzz
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             required:
+  #               - username
+  #               - password
+  #             properties:
+  #               username:
+  #                 type: string
+  #                 minLength: 8
+  #                 maxLength: 50
+  #                 description: User ID String min 8
+  #                 example: "yeenEiEi"
+  #               password:
+  #                 type: string
+  #                 minLength: 8
+  #                 maxLength: 15
+  #                 writeOnly: true
+  #                 description: Password is a Secret
+  #                 example: "************"
+  #     responses:
+  #       200:
+  #         # $ref: "#/components/responses/Success200"
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               required:
+  #                 - code
+  #                 - message
+  #               properties:
+  #                 code:
+  #                   type: number
+  #                   description: HTTP reponse code
+  #                   example: 200
+  #                 message:
+  #                   type: object
+  #       400:
+  #         $ref: "#/components/responses/BadRequest"
+  #       205:
+  #         $ref: "#/components/responses/BodyWarning"
+  # /registor:
+  #   post:
+  #     tags:
+  #       - Auth
+  #     summary: Registor user
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             required:
+  #               - username
+  #               - password
+  #               - email
+  #               - birthday
+  #               - phone
+  #             properties:
+  #               username:
+  #                 type: string
+  #                 minLength: 8
+  #                 maxLength: 50
+  #                 description: User ID String min 8
+  #                 example: "yeenEiEi"
+  #               password:
+  #                 type: string
+  #                 minLength: 8
+  #                 maxLength: 15
+  #                 writeOnly: true
+  #                 description: Password is a Secret
+  #                 example: "************"
+  #               firstname:
+  #                 type: string
+  #                 description: Your firstname name
+  #                 example: Chris
+  #               lastname:
+  #                 type: string
+  #                 description: Your lastname name
+  #                 example: Chris
+  #               email:
+  #                 type: string
+  #                 format: email
+  #                 description: Your email @
+  #                 example: "tibet_17931@hotmail.com"
+  #               birthday:
+  #                 type: string
+  #                 format: date
+  #               phone:
+  #                 type: string
+  #                 pattern: "^[a-zA-Z0-9ก-๙ ,'$!%&_/\\-\\(\\)\\.\\?\\\\\\*\\+]*$"
+  #                 maxLength: 12
+  #                 description: Mobile Phone
+  #                 example: "083-234-5678"
+  #               avatar:
+  #                 type: string
+  #                 description: Base64
+  #     responses:
+  #       200:
+  #         # $ref: "#/components/responses/Success200"
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               required:
+  #                 - code
+  #                 - message
+  #               properties:
+  #                 code:
+  #                   type: number
+  #                   description: HTTP reponse code
+  #                   example: 200
+  #                 message:
+  #                   type: object
+  #       400:
+  #         $ref: "#/components/responses/BadRequest"
+  # /getProfile:
+  #   get:
+  #     tags:
+  #       - Auth
+  #     summary: Get profile from database
+  #     security:
+  #       - bearerAuth: []
+  #     parameters:
+  #       - name: email
+  #         in: query
+  #         schema:
+  #           type: string
+  #           format: email
+  #           description: Your email @
+  #           example: "tibet_17931@hotmail.com"
+  #     responses:
+  #       200:
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               required:
+  #                 - code
+  #                 - message
+  #               properties:
+  #                 code:
+  #                   type: number
+  #                   description: HTTP reponse code
+  #                   example: 200
+  #                 message:
+  #                   type: object
+  #       400:
+  #         $ref: "#/components/responses/BadRequest"
+  #       401:
+  #         $ref: "#/components/responses/Unauthorized"
+components:
+  schemas:
+    $ref: "swagger/schemas.yaml"
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes
+  requestBodies:
+    BodyTemp:
+      description: Property 'attrs' can have {} or [] format
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/BodySchema"
+  responses:
+    Success200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Success"
+    Success201:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Success"
+    Success204:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Success"
+    BadRequest:
+      description: 400 - Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: 401 - Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalServerError:
+      description: 500 - Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    ServiceUnavailable:
+      description: 503 - Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    BodySuccess:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Success"
+    BodyWarning:
+      description: Warning
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Warning"
